@@ -1,0 +1,23 @@
+- apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+
+- shell: |
+    curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | \
+    gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+- shell: |
+    echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] \
+    https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /" \
+    > /etc/apt/sources.list.d/kubernetes.list
+
+- apt:
+    name:
+      - kubelet
+      - kubeadm
+      - kubectl
+    update_cache: yes
+
+- shell: apt-mark hold kubelet kubeadm kubectl

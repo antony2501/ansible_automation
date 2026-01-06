@@ -1,0 +1,4 @@
+- debug:
+    msg: |
+      Chạy lệnh kubeadm join từ master:
+      kubeadm token create --print-join-command

@@ -1,7 +1,0 @@
-- name: Print hello
-  hosts: test
-  gather_facts: no
-  tasks:
-    - name: Say hello
-      debug:
-        msg: "hello"
